@@ -4,6 +4,12 @@ import ExpertGame from './ExpertGame'
 
 export class InitialView extends Component {
 
+    checkGuess = () => {
+        console.log(`The secret number answer is: ${this.props.secretNumber}`);
+        console.log('Checking your guess..');
+
+    }
+
     render() {
 
         return (
@@ -21,8 +27,8 @@ export class InitialView extends Component {
                     
                 )}
 
-                {this.props.gameState === 'expert' && <ExpertGame numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
-                {this.props.gameState === 'standard' && <StandardGame numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
+                {this.props.gameState === 'expert' && <ExpertGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
+                {this.props.gameState === 'standard' && <StandardGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
             </div>
         )
     }

@@ -8,7 +8,8 @@ class App extends Component {
 
     this.initialState = {
       gameState: '',
-      numberOfGuesses: 0
+      numberOfGuesses: 0,
+      secretNumber: ''
     }
 
     this.state = this.initialState;
@@ -22,29 +23,32 @@ class App extends Component {
 
   playStandard = () => {
     this.setState({
-      gameState: 'standard'
+      gameState: 'standard', 
+      secretNumber: Math.floor((Math.random() * 10) + 1)
     });
   }
 
   playExpert = () => {
     this.setState({
-      gameState: 'expert'
+      gameState: 'expert',
+      secretNumber: Math.floor((Math.random() * 100) + 1)
     });
   }
 
   resetGame = () => {
     this.setState({
       gameState: '',
-      numberOfGuesses: 0
+      numberOfGuesses: 0,
+      secretNumber: ''
     })
   }
 
   render() {
-    const { gameState, numberOfGuesses } = this.state;
+    const { gameState, numberOfGuesses, secretNumber } = this.state;
     
     return (
       <div className="App">
-        <InitialView numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
+        <InitialView secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export class StandardGame extends Component {
-    currentGuess = '';
     
     render() {
         return (
