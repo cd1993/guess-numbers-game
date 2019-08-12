@@ -55,12 +55,18 @@ class App extends Component {
     })
   }
 
+  clearInput = () => {
+    this.setState({
+      currentGuess: ''
+    })
+  }
+
   render() {
     const { gameState, numberOfGuesses, secretNumber, currentGuess } = this.state;
     
     return (
       <div className="App">
-        <InitialView handleGuess={this.handleGuess} incrementGuesses={this.incrementGuesses} currentGuess={currentGuess} secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
+        <InitialView clearInput={this.clearInput} handleGuess={this.handleGuess} incrementGuesses={this.incrementGuesses} currentGuess={currentGuess} secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
       </div>
     );
   }
