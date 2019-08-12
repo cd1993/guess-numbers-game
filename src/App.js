@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import InitialView from './components/InitialView'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.initialState = {
+      gameState: '',
+      numberOfGuesses: 0
+    }
+
+    this.state = this.initialState;
+
+    this.playStandard = this.playStandard.bind(this);
+
+    this.playExpert = this.playExpert.bind(this);
+
+    this.resetGame = this.resetGame.bind(this);
+  }
+
+  playStandard = () => {
+    this.setState({
+      gameState: 'standard'
+    });
+  }
+
+  playExpert = () => {
+    this.setState({
+      gameState: 'expert'
+    });
+  }
+
+  resetGame = () => {
+    this.setState({
+      gameState: '',
+      numberOfGuesses: 0
+    })
+  }
+
+  render() {
+    const { gameState, numberOfGuesses } = this.state;
+    
+    return (
+      <div className="App">
+        <InitialView numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
+      </div>
+    );
+  }
+
 }
 
 export default App;
