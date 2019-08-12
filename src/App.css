@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+/* Custom number guessing game styles */
+
+.button {
+  width: 100px;
+  font-size: 16px;
+}

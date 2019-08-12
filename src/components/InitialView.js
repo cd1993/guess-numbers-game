@@ -16,7 +16,8 @@ export class InitialView extends Component {
             <div>
                 {this.props.gameState === '' ? (
                     <div>
-                        <h2>Start Game</h2>
+                        <h2>React - Number Guessing Game</h2>
+                        <h4>Start Game</h4>
                         <button onClick={this.props.playStandard} className="button button-standard">Standard</button>
                         <button onClick={this.props.playExpert} className="button button-expert">Expert</button>
                     </div>
