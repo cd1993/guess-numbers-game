@@ -9,7 +9,8 @@ class App extends Component {
     this.initialState = {
       gameState: '',
       numberOfGuesses: 0,
-      secretNumber: ''
+      secretNumber: 0,
+      currentGuess: 0
     }
 
     this.state = this.initialState;
@@ -28,14 +29,14 @@ class App extends Component {
   playStandard = () => {
     this.setState({
       gameState: 'standard', 
-      secretNumber: Math.floor((Math.random() * 10) + 1)
+      secretNumber: Math.floor((Math.random() * 10) + 1),
     });
   }
 
   playExpert = () => {
     this.setState({
       gameState: 'expert',
-      secretNumber: Math.floor((Math.random() * 100) + 1)
+      secretNumber: Math.floor((Math.random() * 100) + 1),
     });
   }
 
@@ -43,16 +44,23 @@ class App extends Component {
     this.setState({
       gameState: '',
       numberOfGuesses: 0,
-      secretNumber: ''
+      secretNumber: 0,
+      currentGuess: 0
+    })
+  }
+
+  handleGuess = (event) => {
+    this.setState({
+      currentGuess: parseInt(event.target.value)
     })
   }
 
   render() {
-    const { gameState, numberOfGuesses, secretNumber } = this.state;
+    const { gameState, numberOfGuesses, secretNumber, currentGuess } = this.state;
     
     return (
       <div className="App">
-        <InitialView incrementGuesses={this.incrementGuesses} secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
+        <InitialView handleGuess={this.handleGuess} incrementGuesses={this.incrementGuesses} currentGuess={currentGuess} secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
       </div>
     );
   }

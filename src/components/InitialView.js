@@ -3,14 +3,18 @@ import StandardGame from './StandardGame'
 import ExpertGame from './ExpertGame'
 
 export class InitialView extends Component {
-
+    
     checkGuess = () => {
+
         console.log(`The secret number answer is: ${this.props.secretNumber}`);
-        console.log('Checking your guess..');
+        console.log(`Checking your guess.. ${this.props.currentGuess}`);
         this.props.incrementGuesses();
         console.log(`Number of guesses is now: ${this.props.numberOfGuesses}`);
-        
 
+        if (this.props.secretNumber === this.props.currentGuess) {
+            console.log('You win!');
+        }
+        
     }
 
     render() {
@@ -31,8 +35,8 @@ export class InitialView extends Component {
                     
                 )}
 
-                {this.props.gameState === 'expert' && <ExpertGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
-                {this.props.gameState === 'standard' && <StandardGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} />}
+                {this.props.gameState === 'expert' && <ExpertGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} handleGuess={this.props.handleGuess} />}
+                {this.props.gameState === 'standard' && <StandardGame checkGuess={this.checkGuess} numberOfGuesses={this.props.numberOfGuesses} resetGame={this.props.resetGame} handleGuess={this.props.handleGuess} />}
             </div>
         )
     }
