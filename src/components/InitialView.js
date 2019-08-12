@@ -7,6 +7,9 @@ export class InitialView extends Component {
     checkGuess = () => {
         console.log(`The secret number answer is: ${this.props.secretNumber}`);
         console.log('Checking your guess..');
+        this.props.incrementGuesses();
+        console.log(`Number of guesses is now: ${this.props.numberOfGuesses}`);
+        
 
     }
 

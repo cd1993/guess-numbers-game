@@ -21,6 +21,10 @@ class App extends Component {
     this.resetGame = this.resetGame.bind(this);
   }
 
+  incrementGuesses = () => {
+    this.setState({ numberOfGuesses : this.state.numberOfGuesses + 1});
+  }
+
   playStandard = () => {
     this.setState({
       gameState: 'standard', 
@@ -48,7 +52,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <InitialView secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
+        <InitialView incrementGuesses={this.incrementGuesses} secretNumber={secretNumber} numberOfGuesses={numberOfGuesses} resetGame={this.resetGame} playStandard={this.playStandard} playExpert={this.playExpert} gameState={gameState} />
       </div>
     );
   }
